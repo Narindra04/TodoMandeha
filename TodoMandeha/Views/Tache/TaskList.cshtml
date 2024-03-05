@@ -1,0 +1,52 @@
+﻿@model IEnumerable<TodoMandeha.Models.Tache>
+
+@{
+    ViewBag.Title = "TaskList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>TaskList</h2>
+
+<p>
+    @Html.ActionLink("Ajouter Tache", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th hidden>
+            @Html.DisplayNameFor(model => model.Tacheid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.State)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td hidden>
+            @Html.DisplayFor(modelItem => item.Tacheid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.State)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Tacheid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Tacheid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Tacheid })
+        </td>
+    </tr>
+}
+
+</table>

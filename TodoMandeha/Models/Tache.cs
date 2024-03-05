@@ -22,7 +22,12 @@ namespace TodoMandeha.Models
             _description = description;
             _state = state;
         }
-
+        public Tache (int tacheid, string username, string description)
+        {
+            _tacheid= tacheid;
+            _username = username;
+            _description = description;
+        }
         public int Tacheid
         {
             get { return _tacheid; }

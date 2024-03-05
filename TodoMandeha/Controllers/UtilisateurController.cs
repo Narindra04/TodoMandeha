@@ -18,7 +18,7 @@ namespace TodoMandeha.Controllers
             if (DBConnexion.VerifierUtilisateur(utilisateur))
             {
 
-                return Content("BIENVENUE");
+                return RedirectToRoute("TaskList");
             }
             else
             {

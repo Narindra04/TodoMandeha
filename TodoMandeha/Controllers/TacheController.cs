@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TodoMandeha.Models;
 
 namespace TodoMandeha.Controllers
 {
     public class TacheController : Controller
     {
         // GET: Tache
-        public ActionResult Index()
+        public ActionResult TaskList()
         {
-            return View();
+            
+            return View(DBConnexion.retrouverTaches());
         }
 
         // GET: Tache/Details/5
