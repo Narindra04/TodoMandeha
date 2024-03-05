@@ -155,8 +155,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\DBConnection.cs" />
     <Compile Include="Models\DBConnexion.cs" />
+    <Compile Include="Controllers\UtilisateurController.cs" />
+    <Compile Include="Models\Inscription.cs" />
+    <Compile Include="Models\Utilisateur.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -198,6 +200,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Utilisateur\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
