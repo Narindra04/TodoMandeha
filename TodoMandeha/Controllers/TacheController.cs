@@ -13,7 +13,7 @@ namespace TodoMandeha.Controllers
         public ActionResult TaskList()
         {
             
-            return View(DBConnexion.retrouverTaches());
+            return View(DBConnexion.retrouverTaches(Session["username"].ToString()));
         }
 
         // GET: Tache/Details/5

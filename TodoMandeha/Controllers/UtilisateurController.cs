@@ -17,7 +17,7 @@ namespace TodoMandeha.Controllers
         {
             if (DBConnexion.VerifierUtilisateur(utilisateur))
             {
-
+                Session["username"] = utilisateur.Username;
                 return RedirectToRoute("TaskList");
             }
             else

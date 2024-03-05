@@ -31,9 +31,9 @@ namespace TodoMandeha.Models
             return hasUser;
         }
 
-        public static List<Tache> retrouverTaches()
+        public static List<Tache> retrouverTaches(string utilisateur)
         {
-            var req = "SELECT * FROM public.\"Tache\" ";
+            var req = "SELECT * FROM public.\"Tache\" WHERE username= '" +utilisateur+"' ";
             var hasTask = new List<Tache>();
 
             try
@@ -54,6 +54,27 @@ namespace TodoMandeha.Models
             }
 
             return hasTask;
+        }
+
+        public static void AjoutTache(Tache tache)
+        {
+            var hasTask = new List<Tache>();
+            var req = "INSERT INTO public.\"Tache\" (description, username, state) VALUES ('" + tache.Description + "' , '" + tache.Username + "'," + tache.State + ")";
+
+
+            try
+            {
+                connectionString.Open();
+                var cmd = new NpgsqlCommand(req, connectionString);
+                cmd.ExecuteNonQuery();
+                hasTask = retrouverTaches(tache.Username);
+                connectionString.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
     }
 }
