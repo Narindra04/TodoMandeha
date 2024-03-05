@@ -9,6 +9,22 @@ namespace TodoMandeha.Controllers
 {
     public class UtilisateurController : Controller
     {
+        [HttpGet]
+        public ActionResult Inscription()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Inscription(Utilisateur utilisateur)
+        {
+            if (utilisateur.Username != null)
+            {
+                DBConnexion.InscriptionUtilisateur(utilisateur);
+            }
+            return Content($"<h1>Bonjour, {utilisateur.Username}. Bienvenue! </h1>");
+        }
+
         public ActionResult Login()
         {
             return View();
@@ -97,5 +113,6 @@ namespace TodoMandeha.Controllers
                 return View();
             }
         }
+
     }
 }

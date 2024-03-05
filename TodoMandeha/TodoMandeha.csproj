@@ -153,14 +153,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\UtilisateurController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DBConnexion.cs" />
-    <Compile Include="Models\Utilisateur.cs" />
     <Compile Include="Controllers\UtilisateurController.cs" />
-    <Compile Include="Models\Inscription.cs" />
     <Compile Include="Models\Utilisateur.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -200,10 +197,10 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Utilisateur\Login.cshtml" />
+    <Content Include="Views\Utilisateur\Inscription.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Utilisateur\" />
     <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>
