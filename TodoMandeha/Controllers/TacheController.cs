@@ -7,54 +7,28 @@ using TodoMandeha.Models;
 
 namespace TodoMandeha.Controllers
 {
-    public class UtilisateurController : Controller
+    public class TacheController : Controller
     {
-        [HttpGet]
-        public ActionResult Inscription()
+        // GET: Tache
+        public ActionResult TaskList()
         {
-            return View();
+            
+            return View(DBConnexion.retrouverTaches());
         }
 
-        [HttpPost]
-        public ActionResult Inscription(Utilisateur utilisateur)
-        {
-            if (utilisateur.Username != null)
-            {
-                DBConnexion.InscriptionUtilisateur(utilisateur);
-            }
-            return Content($"<h1>Bonjour, {utilisateur.Username}. Bienvenue! </h1>");
-        }
-
-        public ActionResult Login()
-        {
-            return View();
-        }
-        public ActionResult Authentification(Utilisateur utilisateur)
-        {
-            if (DBConnexion.VerifierUtilisateur(utilisateur))
-            {
-
-                return RedirectToRoute("TaskList");
-            }
-            else
-            {
-                return Content("NON CONNECTE");
-            }
-        }
-
-        // GET: Utilisateur/Details/5
+        // GET: Tache/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Utilisateur/Create
+        // GET: Tache/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Utilisateur/Create
+        // POST: Tache/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -70,13 +44,13 @@ namespace TodoMandeha.Controllers
             }
         }
 
-        // GET: Utilisateur/Edit/5
+        // GET: Tache/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Utilisateur/Edit/5
+        // POST: Tache/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -92,13 +66,13 @@ namespace TodoMandeha.Controllers
             }
         }
 
-        // GET: Utilisateur/Delete/5
+        // GET: Tache/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Utilisateur/Delete/5
+        // POST: Tache/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
@@ -113,6 +87,5 @@ namespace TodoMandeha.Controllers
                 return View();
             }
         }
-
     }
 }

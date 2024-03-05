@@ -30,6 +30,31 @@ namespace TodoMandeha.Models
             }
             return hasUser;
         }
+
+        public static List<Tache> retrouverTaches()
+        {
+            var req = "SELECT * FROM public.\"Tache\" ";
+            var hasTask = new List<Tache>();
+
+            try
+            {
+                connectionString.Open();
+                var cmd = new NpgsqlCommand(req, connectionString);
+                var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    var Task = new Tache(reader.GetInt32(0), reader["description"].ToString(), reader["username"].ToString(), reader.GetBoolean(3));
+                    hasTask.Add(Task);
+                }
+                connectionString.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return hasTask;
+        }
         public static void InscriptionUtilisateur (Utilisateur utilisateur)
         {
             var req = $"INSERT INTO public\"User\" (username, password) VALUES ('{utilisateur.Username}, '{utilisateur.Password}'";
