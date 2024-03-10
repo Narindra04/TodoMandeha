@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -22,26 +23,24 @@ namespace TodoMandeha.Controllers
             return View();
         }
 
-        // GET: Tache/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
+      
         // POST: Tache/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+       
+        public ActionResult Create(string username, string description, bool state)
         {
-            try
-            {
-                // TODO: Add insert logic here
+          
+                var tache = new Tache();
+                tache.Username = Session["username"].ToString();
+                tache.Description = description;
+                tache.State = state;
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+                DBConnexion.AjoutTache(tache);
+
+            return RedirectToRoute("TaskList");
+            
+               
+               
         }
 
         // GET: Tache/Edit/5

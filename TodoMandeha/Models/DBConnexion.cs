@@ -67,8 +67,9 @@ namespace TodoMandeha.Models
                 connectionString.Open();
                 var cmd = new NpgsqlCommand(req, connectionString);
                 cmd.ExecuteNonQuery();
-                hasTask = retrouverTaches(tache.Username);
+                
                 connectionString.Close();
+                hasTask = retrouverTaches(tache.Username);
             }
             catch (Exception ex)
             {
