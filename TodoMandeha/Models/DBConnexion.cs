@@ -77,5 +77,21 @@ namespace TodoMandeha.Models
             }
 
         }
+        public static void InscriptionUtilisateur(Utilisateur utilisateur)
+        {
+            var req = $"INSERT INTO public\"User\" (username, password) VALUES ('{utilisateur.Username}, '{utilisateur.Password})'";
+            try
+            {
+                connectionString.Open();
+                var cmd = new NpgsqlCommand(req, connectionString);
+                cmd.ExecuteNonQuery();
+                connectionString.Close();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return;
+        }
     }
 }
