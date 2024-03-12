@@ -1,0 +1,127 @@
+﻿@model IEnumerable<TodoMandeha.Models.Tache>
+
+
+
+@{
+    ViewBag.Title = "TaskList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>TaskList</h2>
+
+
+
+
+
+<table class="table">
+    <tr>
+        <th hidden>
+            @Html.DisplayNameFor(model => model.Tacheid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.State)
+        </th>
+        <th></th>
+    </tr>
+
+
+
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td hidden>
+                @Html.DisplayFor(modelItem => item.Tacheid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Tacheid }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Tacheid }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Tacheid })
+            </td>
+        </tr>
+    }
+
+</table>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Ajouter Tache
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+
+
+
+
+
+
+                <div class="modal-body">
+                    @using (Html.BeginForm("Create","Tache"))
+                    {
+                        @Html.AntiForgeryToken()
+                        
+
+                    <div class="form-horizontal">
+                        <h4>Tache</h4>
+                        <hr />
+
+                        
+
+                        <div class="form-group">
+                            @Html.Label("Description", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextBox("Description", null, new { @class = "form-control" })
+                                @Html.ValidationMessage("Description", "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.Label("State", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.CheckBox("State")
+                                @Html.ValidationMessage("State", "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+
+                            <button type="submit" class="btn btn-primary">Ajouter</button>
+                        </div>
+
+
+                    </div>
+                    }
+                </div>
+
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+
